@@ -1,7 +1,6 @@
 # Welcome to the python emmulator.
 
- [Click here to view](https://zeeshanhanif.github.io/codelink/) 
- or visit https://zeeshanhanif.github.io/codelink/
+ Click here to view on github page https://zeeshanhanif.github.io/codelink/
 
 
 ### Installation
