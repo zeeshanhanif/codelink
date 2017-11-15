@@ -7,38 +7,17 @@
   <meta name="theme-color" content="#000000">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <link rel="stylesheet" href="%PUBLIC_URL%/assets/styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles/bootstrap.min.css" />
 
-  <link rel="stylesheet" href="%PUBLIC_URL%/assets/styles/doc_brython.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles/doc_brython.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
-  <link rel="stylesheet" href="%PUBLIC_URL%/assets/styles/console.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles/console.css">
 
   <title>React App</title>
 
-  <script type="text/javascript" src="%PUBLIC_URL%/assets/brython.js"></script>
-  <script type="text/javascript" src="%PUBLIC_URL%/assets/brython_stdlib.js"></script>
-  <script src="%PUBLIC_URL%/assets/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-  <script src="%PUBLIC_URL%/assets/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-  <script src="%PUBLIC_URL%/assets/ace/mode-python3.js" type="text/javascript" charset="utf-8"></script>
-  <script src="%PUBLIC_URL%/assets/ace/snippets/python.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="%PUBLIC_URL%/brython.js"></script>
+  <script type="text/python" src="%PUBLIC_URL%/initPy.js"></script>  
 
-  <script type="text/python3" id="tests_editor">
-        from browser import document as doc, window
-        from browser import html
-        import editor, editor2
-        doc['run2'].bind('click',editor2.run)
-    </script>
-
-  <script>
-    function run_js() {
-      var cons = document.getElementById("console");
-      var jscode = cons.value;
-      var t0 = (new Date()).getTime();
-      eval(jscode);
-      var t1 = (new Date()).getTime();
-      console.log("Javascript code run in " + (t1 - t0) + " ms")
-    }
-  </script>
 
 </head>
 
@@ -48,6 +27,24 @@
   </noscript>
   <div id="root"></div>
 
+
+  <script src="%PUBLIC_URL%/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="%PUBLIC_URL%/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+  <script src="%PUBLIC_URL%/ace/mode-python3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="%PUBLIC_URL%/ace/snippets/python.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/python3" src="%PUBLIC_URL%/initPy.js"></script>
+
+<script>
+function run_js() {
+  var cons = document.getElementById("console");
+  var jscode = cons.value;
+  var t0 = (new Date()).getTime();
+  eval(jscode);
+  var t1 = (new Date()).getTime();
+  console.log("Javascript code run in " + (t1 - t0) + " ms")
+}
+</script>
 </body>
 
 </html>
