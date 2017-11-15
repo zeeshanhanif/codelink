@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  HashRouter,
   BrowserRouter,
   Route
 } from 'react-router-dom'
@@ -14,7 +15,9 @@ const ParentApp = () => (
     <App />
 
     {/* App routing goes here!! */}
-    <Route exact path="/" component={Home} />
+      <Route exact path="/codelink" component={Home} />
+    {/* <Route path="/codelink">
+    </Route> */}
 
   </div>
 );
