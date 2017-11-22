@@ -15,7 +15,10 @@ class Home extends Component {
         //   value: newValue
         // })
       }
-
+    autoresize(textarea) {
+        textarea.style.height = '0px';     //Reset height, so that it not only grows but also shrinks
+        textarea.style.height = (textarea.scrollHeight+10) + 'px';    //Set new height
+    }
     render() {
         return (
             <div className="app-container">
@@ -60,10 +63,11 @@ class Home extends Component {
                         <div className="col-lg-12">
                             <div className="row">
                                 <div className="col-lg-8">
-                                    <h4>Output Console</h4>
                                 </div>
                                 <div className="col-lg-4 text-right">
-                                    <button id="run2" className="btn btn-success">Run</button>
+                                    <button id="run2" onClick={() => {
+                                        setTimeout(() => this.autoresize(document.getElementById('console')), 100)
+                                    }} className="btn btn-success">Run</button>
                                 </div>
                             </div>
                             <div>
