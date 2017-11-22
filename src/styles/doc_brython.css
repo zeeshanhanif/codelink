@@ -49,10 +49,13 @@ a.banner:hover,a.banner:active {
 }
 
 #console {
-  background-color:#000;
-  color:#FFF;
+  background-color:#f3f3f3;
+  color:#3e3434;
   font-size:12px;
-  font-weight:700
+  font-weight:700;
+  border-color: #dfd8d8;
+  resize: vertical;
+  padding: 15px;
 }
 
 #content {
@@ -183,4 +186,8 @@ strong {
         display: none
     }
 
+}
+#codeEditor {
+  height: 150px !important;
+  width: 100% !important;
 }

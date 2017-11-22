@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import brace from 'brace';
+import 'brace/mode/python';
+import 'brace/theme/github';
+import '../../styles/doc_brython.css';
+import '../../styles/console.css';
 
 class App extends Component {
   render() {

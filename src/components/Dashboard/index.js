@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
+import AceEditor from 'react-ace';
+
+
 
 class Home extends Component {
+    onLoad = () => {
+        console.log("On Loaded!!!!!! Yooooo");
+    }
+
+    onChange = (newValue) => {
+        console.log('changed!!!!!!!!', newValue);
+        // this.setState({
+        //   value: newValue
+        // })
+      }
+
     render() {
         return (
             <div className="app-container">
@@ -16,16 +31,33 @@ class Home extends Component {
                         </ul>
                     </div>
                 </nav>
-
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-12">
                             <h4>User Code</h4>
-                            <div id="container">
-                                <div id="editor" className="editor" style={{ width: '100%' }}></div>
-                            </div>
+                            <AceEditor
+                                mode="python"
+                                theme="github"
+                                name="codeEditor"
+                                onLoad={this.onLoad}
+                                onChange={this.onChange}
+                                fontSize={14}
+                                showPrintMargin={true}
+                                showGutter={true}
+                                highlightActiveLine={true}
+                                editorProps={{$blockScrolling: true}}
+                                setOptions={{
+                                    enableBasicAutocompletion: true,
+                                    enableLiveAutocompletion: true,
+                                    enableSnippets: true,
+                                    showLineNumbers: true,
+                                    tabSize: 2,
+                                    highlightActiveLine: false,
+                                    highlightSelectedWord: true
+                                }}
+                            />
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-12">
                             <div className="row">
                                 <div className="col-lg-8">
                                     <h4>Output Console</h4>
@@ -34,19 +66,9 @@ class Home extends Component {
                                     <button id="run2" className="btn btn-success">Run</button>
                                 </div>
                             </div>
-                            <div style={{ width: '100%', height: '340px' }}>
-                                <textarea id="console" autoComplete="off" style={{ height: '100%' }}></textarea>
+                            <div>
+                                <textarea readOnly id="console" autoComplete="off"></textarea>
                             </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <h4>Testing Code</h4>
-                            <div id="container2">
-                                <div id="editor2" className="editor" style={{ width: '100%' }}></div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
                         </div>
                     </div>
                 </div>
