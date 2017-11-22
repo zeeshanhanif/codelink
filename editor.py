@@ -5,32 +5,8 @@ import javascript
 
 from browser import document as doc, window, alert
 
-# set height of container to 66% of screen
-_height = doc.documentElement.clientHeight
-_s = doc['container']
-_s.style.height = '%spx' % int(_height * 0.66)
-
 has_ace = True
-try:
-    editor = window.ace.edit("editor")
-    session = editor.getSession()
-    session.setMode("ace/mode/python")
-
-    editor.setOptions({
-     'enableLiveAutocompletion': True,
-     'enableSnippets': True,
-     'highlightActiveLine': False,
-     'highlightSelectedWord': True
-    })
-except:
-    from browser import html
-    editor = html.TEXTAREA(rows=20, cols=70)
-    doc["editor"] <= editor
-    def get_value(): return editor.value
-    def set_value(x):editor.value = x
-    editor.getValue = get_value
-    editor.setValue = set_value
-    has_ace = False
+editor = window.ace.edit("codeEditor")
 
 if hasattr(window, 'localStorage'):
     from browser.local_storage import storage
@@ -68,8 +44,6 @@ if "console" in doc:
 
 def to_str(xx):
     return str(xx)
-
-
 
 output = ''
 
