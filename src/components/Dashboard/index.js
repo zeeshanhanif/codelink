@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import AceEditor from 'react-ace';
-
-
+import 'brace/mode/python';
+import 'brace/theme/tomorrow';
+import 'brace/snippets/python';
+import 'brace/ext/language_tools';
 
 class Home extends Component {
     onLoad = () => {
@@ -14,7 +16,11 @@ class Home extends Component {
         // this.setState({
         //   value: newValue
         // })
-      }
+    }
+    handleRun = () =>{
+        setTimeout(() => this.autoresize(document.getElementById('console')), 100);
+
+    }
     autoresize(textarea) {
         textarea.style.height = '0px';     //Reset height, so that it not only grows but also shrinks
         textarea.style.height = (textarea.scrollHeight+10) + 'px';    //Set new height
@@ -40,7 +46,7 @@ class Home extends Component {
                             <h4>User Code</h4>
                             <AceEditor
                                 mode="python"
-                                theme="github"
+                                theme="tomorrow"
                                 name="codeEditor"
                                 onLoad={this.onLoad}
                                 onChange={this.onChange}
@@ -53,7 +59,7 @@ class Home extends Component {
                                     enableBasicAutocompletion: true,
                                     enableLiveAutocompletion: true,
                                     enableSnippets: true,
-                                    showLineNumbers: true,
+                                    showLineNumbers: false,
                                     tabSize: 2,
                                     highlightActiveLine: false,
                                     highlightSelectedWord: true
@@ -65,9 +71,7 @@ class Home extends Component {
                                 <div className="col-lg-8">
                                 </div>
                                 <div className="col-lg-4 text-right">
-                                    <button id="run2" onClick={() => {
-                                        setTimeout(() => this.autoresize(document.getElementById('console')), 100)
-                                    }} className="btn btn-success">Run</button>
+                                    <button id="run2" onClick={this.handleRun} className="btn btn-success">Run</button>
                                 </div>
                             </div>
                             <div>

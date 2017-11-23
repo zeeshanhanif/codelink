@@ -70,11 +70,12 @@ def run(*args):
         exec(src, ns)
         state = 1
     except Exception as exc:
-        traceback.print_exc(file=sys.stderr)
+        # traceback.print_exc(file=sys.stderr)
+        print(exc)
         state = 0
     output = doc["console"].value
 
-    print('<completed in %6.2f ms>' % ((time.perf_counter() - t0) * 1000.0))
+    # print('<completed in %6.2f ms>' % ((time.perf_counter() - t0) * 1000.0))
     return state
 
 def returnValue():
