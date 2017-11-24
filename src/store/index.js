@@ -12,3 +12,4 @@ function configureStore() {
 }
 
 export const store = configureStore();
+window.store = store; // to access store in python files.

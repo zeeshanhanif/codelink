@@ -29,9 +29,8 @@ export class HttpService {
 
     static saveLocalStorage(key, payload) {
         return Observable.fromPromise(new Promise((resolve, reject) => {
-            let jsonData = JSON.stringify(payload)
-            localStorage.setItem(key, jsonData);
-            resolve(jsonData);
+            localStorage.setItem(key, payload);
+            resolve(payload);
         }));
     }
 

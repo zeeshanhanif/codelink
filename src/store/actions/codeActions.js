@@ -25,4 +25,24 @@ export default class CodeActions {
             error: error
         }
     }
+
+    static GetCode() {
+        return {
+            type: GET_CODE,
+        }
+    }
+
+    static GetCodeSuccess(data) {
+        return {
+            type: GET_CODE_SUCCESS,
+            payload: data
+        }
+    }
+
+    static GetCodeFailure(error) {
+        return {
+            type: GET_CODE_FAILURE,
+            error: error
+        }
+    }
 }

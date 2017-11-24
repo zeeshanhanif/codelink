@@ -7,6 +7,8 @@ from browser import document as doc, window, alert
 
 has_ace = True
 editor = window.ace.edit("codeEditor")
+store = window.store
+user_code = store.getState()
 
 if hasattr(window, 'localStorage'):
     from browser.local_storage import storage
@@ -17,16 +19,16 @@ if 'set_debug' in doc:
     __BRYTHON__.debug = int(doc['set_debug'].checked)
 
 def reset_src():
-    if storage is not None and "py_src" in storage:
-        editor.setValue(storage["py_src"])
+    if storage is not None and "user_code" in storage:
+        editor.setValue(storage["user_code"])
     else:
         editor.setValue('for i in range(10):\n\tprint(i)')
     editor.scrollToRow(0)
     editor.gotoLine(0)
 
 def reset_src_area():
-    if storage and "py_src" in storage:
-        editor.value = storage["py_src"]
+    if user_code and "user_code" in storage:
+        editor.value = storage["user_code"]
     else:
         editor.value = 'for i in range(10):\n\tprint(i)'
 
@@ -62,7 +64,7 @@ def run(*args):
     doc["console"].value = ''
     src = editor.getValue()
     if storage is not None:
-       storage["py_src"] = src
+       storage["user_code"] = src
 
     t0 = time.perf_counter()
     try:
@@ -76,12 +78,15 @@ def run(*args):
     output = doc["console"].value
 
     # print('<completed in %6.2f ms>' % ((time.perf_counter() - t0) * 1000.0))
+    # print(type(user_code))
+    # print(getattr(getattr(getattr(user_code, 'CodeReducer'),'code'),'cleanCode'))
+
     return state
 
 def returnValue():
     src = editor.getValue()
     if storage is not None:
-        storage["py_src"] = src
+        storage["user_code"] = src
     return editor.getValue()
 
 def show_js(ev):

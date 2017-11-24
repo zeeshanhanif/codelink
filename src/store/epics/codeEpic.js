@@ -16,9 +16,14 @@ export default class CodeEpic {
                 return HttpService.saveLocalStorage("user_code", payload)
                     .switchMap( response => {
                         if (response) {
+                            let cleanCode = response.replace(/[\n,\t]/g,"");
+                            let codeObj = {
+                                orgCode: JSON.stringify(response),
+                                cleanCode: cleanCode
+                            }
                             return Observable.of({
                                 type: SAVE_CODE_SUCCESS,
-                                payload: response
+                                payload: codeObj
 
                             });
                         }
@@ -34,12 +39,12 @@ export default class CodeEpic {
         action$.ofType(GET_CODE)
             .switchMap(({ payload }) => {
                 return HttpService.getLocalStorage("user_code")
-                    .switchMap(({ response }) => {
-                        console.log("Error in get code");
-                        if (response.err) {
+                    .switchMap( response => {
+                        console.log(response);
+                        if (!response) {
                             return Observable.of({
                                 type: GET_CODE_FAILURE,
-                                payload: response.err
+                                payload: "There is no code available"
                             });
                         }
                         return Observable.of({

@@ -17,9 +17,9 @@ class Home extends Component {
     }
     currentCode = "";
 
-    // componentWillReceiveProps(nextProps){
-    //     console.log(nextProps.CodeObj.code);
-    // }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps.CodeObj.code);
+    }
 
     onLoad = () => {
         console.log("On Loaded!!!!!!");
@@ -27,10 +27,10 @@ class Home extends Component {
 
     onChange = (newValue) => {
         this.currentCode = newValue;
-        // this.setState({ currentCode: newValue });
     }
     handleRun = () =>{
         setTimeout(() => this.autoresize(document.getElementById('console')), 100);
+        this.setState({ currentCode: this.currentCode });
         this.props.saveCode(this.currentCode);
     }
     autoresize(textarea) {
@@ -67,6 +67,7 @@ class Home extends Component {
                                 showGutter={true}
                                 highlightActiveLine={true}
                                 editorProps={{$blockScrolling: true}}
+                                value={this.state.currentCode}
                                 setOptions={{
                                     enableBasicAutocompletion: true,
                                     enableLiveAutocompletion: true,
