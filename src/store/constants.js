@@ -1,11 +1,7 @@
-export const SIGNUP = 'SIGNUP'
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
-export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
+export const SAVE_CODE = 'SAVE_CODE'
+export const SAVE_CODE_SUCCESS = 'SAVE_CODE_SUCCESS'
+export const SAVE_CODE_FAILURE = 'SAVE_CODE_FAILURE'
 
-export const SIGNIN = 'SIGNIN'
-export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
-export const SIGNIN_FAILURE = 'SIGNIN_FAILURE'
-
-export const LOGOUT = 'LOGOUT'
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE'
+export const GET_CODE = 'GET_CODE'
+export const GET_CODE_SUCCESS = 'GET_CODE_SUCCESS'
+export const GET_CODE_FAILURE = 'GET_CODE_FAILURE'

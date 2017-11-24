@@ -1,10 +1,10 @@
 import { combineEpics } from 'redux-observable';
 
-import AuthEpic from './authEpic'
+import CodeEpic from './codeEpic'
 
 const rootEpic = combineEpics(
-    AuthEpic.signupEpic,
-    AuthEpic.signinEpic
+    CodeEpic.saveCodeEpic,
+    CodeEpic.getCodeEpic
 );
 
 export default rootEpic;

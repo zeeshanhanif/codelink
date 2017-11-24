@@ -1,5 +1,5 @@
-import AuthActions from './authActions'
+import CodeActions from './codeActions'
 
 export {
-    AuthActions
+    CodeActions
 }

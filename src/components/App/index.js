@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import brace from 'brace';
+// import brace from 'brace';
 import '../../styles/doc_brython.css';
 import '../../styles/console.css';
 

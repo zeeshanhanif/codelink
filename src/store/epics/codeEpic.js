@@ -1,50 +1,49 @@
 import {
-    SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE,
-    SIGNIN, SIGNIN_SUCCESS, SIGNIN_FAILURE
+    SAVE_CODE, SAVE_CODE_SUCCESS, SAVE_CODE_FAILURE,
+    GET_CODE, GET_CODE_SUCCESS, GET_CODE_FAILURE,
 } from '../constants'
 import 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpService } from './../../services/http';
-import Path from './../../config/path';
 
 //** Epic Middlewares For Auth **//
-export default class AuthEpic {
+export default class CodeEpic {
 
-    //Epic middleware for login
-    static signinEpic = (action$) =>
-        action$.ofType(SIGNIN)
+    //Epic middleware for save code
+    static saveCodeEpic = (action$) =>
+        action$.ofType(SAVE_CODE)
             .switchMap(({ payload }) => {
-                return HttpService.post(Path.LOGIN, payload)
-                    .switchMap(({ response }) => {
-                        console.log(response)
+                return HttpService.saveLocalStorage("user_code", payload)
+                    .switchMap( response => {
                         if (response) {
                             return Observable.of({
-                                type: SIGNIN_SUCCESS,
+                                type: SAVE_CODE_SUCCESS,
                                 payload: response
-                                
+
                             });
                         }
                         return Observable.of({
-                            type: SIGNIN_FAILURE,
-                            payload: "email and password not matched ! Try Again "
+                            type: SAVE_CODE_FAILURE,
+                            payload: "Unable to save code! Try Again "
                         });
                     });
             })
 
-    //Epic middleware for signup
-    static signupEpic = (action$) =>
-        action$.ofType(SIGNUP)
+    //Epic middleware for get code
+    static getCodeEpic = (action$) =>
+        action$.ofType(GET_CODE)
             .switchMap(({ payload }) => {
-                return HttpService.post(Path.SIGNUP, payload)
+                return HttpService.getLocalStorage("user_code")
                     .switchMap(({ response }) => {
+                        console.log("Error in get code");
                         if (response.err) {
                             return Observable.of({
-                                type: SIGNUP_FAILURE,
+                                type: GET_CODE_FAILURE,
                                 payload: response.err
                             });
                         }
                         return Observable.of({
-                            type: SIGNUP_SUCCESS,
+                            type: GET_CODE_SUCCESS,
                             payload: response
                         });
                     });
