@@ -17,9 +17,9 @@ class Home extends Component {
     }
     currentCode = "";
 
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps.CodeObj.code);
-    }
+    // componentWillReceiveProps(nextProps){
+    //     console.log(nextProps.CodeObj.code);
+    // }
 
     onLoad = () => {
         console.log("On Loaded!!!!!!");

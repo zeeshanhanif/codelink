@@ -3,7 +3,10 @@ import {
     GET_CODE, GET_CODE_SUCCESS, GET_CODE_FAILURE,
 } from '../constants'
 const initialState = {
-    code: {},
+    code: {
+        orgCode: "print('Hello World')", 
+        cleanCode: "print('Hello World')"
+    },
     isLoading: false,
     isError: false,
     error: "",
@@ -14,7 +17,6 @@ export default function CodeReducer(state = initialState, action) {
         case SAVE_CODE:
             return {
                 ...state,
-                code: "",
                 isLoading: true,
                 isError: false,
                 error: "",
@@ -35,7 +37,6 @@ export default function CodeReducer(state = initialState, action) {
             case GET_CODE:
             return {
                 ...state,
-                code: "",
                 isLoading: true,
                 isError: false,
                 error: "",
