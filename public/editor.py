@@ -63,7 +63,6 @@ def run(ev):
         print(exc)
         state = 0
     output = doc[consoleId].value
-    print(consoleId)
     # print('<completed in %6.2f ms>' % ((time.perf_counter() - t0) * 1000.0))
     return state
 

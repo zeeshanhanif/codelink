@@ -12,7 +12,7 @@ class Home extends Component {
     constructor(){
         super();
         this.state = {
-            currentCode: "",
+            currentCode: [],
             editors: [{
                 id: 0
             }]
@@ -31,7 +31,9 @@ class Home extends Component {
     }
     handleRun = (id) =>{
         setTimeout(() => this.autoresize(document.getElementById('console'+id)));
-        this.setState({ currentCode: this.currentCode });
+        var arr = this.state.currentCode;
+        arr[id] = this.currentCode;
+        this.setState({ currentCode: arr});
         this.props.saveCode(this.currentCode);
     }
     autoresize(textarea) {
@@ -41,10 +43,12 @@ class Home extends Component {
     
     addEditor = () =>{
         let tempEditors = this.state.editors.slice(0);
+        let arr = this.state.currentCode;
+        arr.push("print('Hello World')")
         tempEditors.push(
             {id: true}
         );
-        this.setState({ editors: tempEditors });
+        this.setState({ editors: tempEditors ,currentCode:arr});
     }
     printEditor = () => {
         return (this.state.editors.map((d,i)=> {
@@ -69,7 +73,7 @@ class Home extends Component {
                         showGutter={true}
                         highlightActiveLine={true}
                         editorProps={{$blockScrolling: true}}
-                        value={this.state.currentCode}
+                        value={this.state.currentCode[i]}
                         setOptions={{
                             enableBasicAutocompletion: true,
                             enableLiveAutocompletion: true,
