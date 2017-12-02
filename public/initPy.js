@@ -1,4 +1,7 @@
 from browser import document as doc, window
-from browser import html
 import editor
-doc['run2'].bind('click',editor.run)
+
+def setBinder(id):
+    doc[id].bind('click',editor.run)
+
+window.setBinder(setBinder)

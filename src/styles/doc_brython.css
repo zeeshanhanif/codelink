@@ -48,7 +48,7 @@ a.banner:hover,a.banner:active {
   width:100%
 }
 
-#console {
+.console {
   color:#3e3434;
   font-size:12px;
   font-weight:700;
@@ -173,7 +173,7 @@ strong {
         padding: 0
     }
 
-    #console {
+    .console {
         font-size: 10px
     }
 
@@ -186,7 +186,7 @@ strong {
     }
 
 }
-#codeEditor {
+.codeEditor {
   height: 150px !important;
   width: 100% !important;
 }
